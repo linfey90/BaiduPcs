@@ -308,6 +308,28 @@ public class BaiduPcs {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	/**
+     * 删除单个文件/目录。<br>
+     * 注意：<br>
+     * <li>文件/目录删除后默认临时存放在回收站内，删除文件或目录的临时存放不占用用户的空间配额；<br> <li>
+     * 存放有效期为10天，10天内可还原回原路径下，10天后则永久删除。
+     * 
+     * @param path
+     *             需要删除的文件或者目录路径。此路径是以应用文件夹为根目录的路径。
+     * @throws BaiduPcsException
+     * @throws IOException
+     *              网络错误
+     */
+    public void delete(String path) throws BaiduPcsException, IOException {
+        try {
+            pcsService.delete(METHOD_DELETE, accessToken, realPath(path));
+        } catch (IOException | Error e) {
+            throw e;
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 	private String realPath(String path) {
 		if (path == null)
