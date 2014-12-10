@@ -58,15 +58,15 @@ public class MainTest {
                     System.out.println(t.getFileName());
             }
             
-            Path path = Paths.get("conn.dat");
-            byte[] context = Files.readAllBytes(path);
+            //Path path = Paths.get("conn.dat");
+            //byte[] context = Files.readAllBytes(path);
             
-            tmp = pcs.list("/just4test/");
+            tmp = pcs.list("/0a-00-27-00-00-00/Data/");
             for(FileMetaWithExtra t : tmp) {
                 System.out.println(t.getFileName());
             }
             
-            BufferedReader r = new BufferedReader(new InputStreamReader(pcs.download("just4test/conn.dat").in(), StandardCharsets.UTF_8));
+            BufferedReader r = new BufferedReader(new InputStreamReader(pcs.download("/0a-00-27-00-00-00/Data/Schema.xml").in(), StandardCharsets.UTF_8));
             String str = null;
             StringBuilder sb = new StringBuilder();
             while ((str = r.readLine()) != null) {
