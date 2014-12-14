@@ -10,7 +10,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
-import java.util.Base64;
+
+import javax.xml.bind.DatatypeConverter;
 
 import org.apache.commons.io.IOUtils;
 
@@ -38,7 +39,9 @@ public class BaiduUtil {
     /** Read the object from Base64 string. */
     public static Object fromString(String s) throws IOException, ClassNotFoundException {
 
-        byte[] data = Base64.getDecoder().decode(s);
+        byte[] data = DatatypeConverter.parseBase64Binary(s);
+        // Java 8 特有
+        //byte[] data = Base64.getDecoder().decode(s);
         ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(data));
         Object o = ois.readObject();
         ois.close();
@@ -51,7 +54,10 @@ public class BaiduUtil {
         ObjectOutputStream oos = new ObjectOutputStream(baos);
         oos.writeObject(o);
         oos.close();
-        return new String(Base64.getEncoder().encode(baos.toByteArray()));
+        
+        return DatatypeConverter.printBase64Binary(baos.toByteArray());
+        // Java 8 特有
+        //return new String(Base64.getEncoder().encode(baos.toByteArray()));
     }
 
 }
