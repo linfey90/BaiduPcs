@@ -30,18 +30,19 @@ import baidupcs.response.api.FileMetaWithExtra;
 public class MainTest {
 
     public static void main(String args[]) throws ClassNotFoundException {
-        String refresh_token = "22.fcc685e52dc36cf26a8057da624fc34f.315360000.1732713775.2567539370-4425951";
+        String refresh_token = "22.4ed4c3f7037547816cdad161545321de.315360000.1741412718.2567539370-4425951";
         String api_token = "fBEQIGpLVyygL0symSqSzHNI";
         String secret_token = "09DN9P0vevuu53DTh9GXqCc9lEgUq8UH";
         String appName = "PCS_Pandora2";
-        String accessToken = "21.c65318b5179d15f0f0065a998d39678b.2592000.1419945775.2567539370-4425951";
-        String expireTime = "1419945776174";
+        String accessToken = "21.9a09ca29d5716ca1cd98685d9697df40.2592000.1428644718.2567539370-4425951";
+        String expireTime = "1424725311252";
 
         try {
             //AccessToken ac = BaiduPcsAuth.validateToken(api_token, secret_token, refresh_token, accessToken, appName,
             //        expireTime, retrofit.RestAdapter.LogLevel.FULL);
             AccessToken ac = BaiduPcsAuth.validateToken(api_token, secret_token, refresh_token, accessToken, appName,
-                    expireTime, null);
+                    expireTime, retrofit.RestAdapter.LogLevel.NONE);
+           //AccessToken ac = BaiduPcsAuth.validateToken(api_token, secret_token, refresh_token, appName);
             
             //AccessToken ac;
             //ac = BaiduPcsAuth.validateToken(ac);
@@ -60,12 +61,12 @@ public class MainTest {
             
             //Path path = Paths.get("conn.dat");
             //byte[] context = Files.readAllBytes(path);
-            
+            /*
             tmp = pcs.list("/0a-00-27-00-00-00/Data/");
             for(FileMetaWithExtra t : tmp) {
                 System.out.println(t.getFileName());
             }
-            
+            /*
             BufferedReader r = new BufferedReader(new InputStreamReader(pcs.download("/0a-00-27-00-00-00/Data/Schema.xml").in(), StandardCharsets.UTF_8));
             String str = null;
             StringBuilder sb = new StringBuilder();
@@ -73,7 +74,7 @@ public class MainTest {
               sb.append(str + "\n");
             }
             System.out.println("data from InputStream as String : \n" + sb.toString());
-            
+            */
         } catch (BaiduPcsFileExistsException e) {
             System.out.println("exist!@!!");
         } catch (BaiduPcsException e) {
