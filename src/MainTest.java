@@ -14,6 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Base64;
+import java.util.Date;
 import java.util.Base64.Decoder;
 import java.util.List;
 
@@ -30,18 +31,18 @@ import baidupcs.response.api.FileMetaWithExtra;
 public class MainTest {
 
     public static void main(String args[]) throws ClassNotFoundException {
-        String refresh_token = "22.4ed4c3f7037547816cdad161545321de.315360000.1741412718.2567539370-4425951";
+        String refresh_token = "22.9ed27b0d1ca801650e7a72a167d45b14.315360000.1741414833.2567539370-4425951";
         String api_token = "fBEQIGpLVyygL0symSqSzHNI";
         String secret_token = "09DN9P0vevuu53DTh9GXqCc9lEgUq8UH";
         String appName = "PCS_Pandora2";
-        String accessToken = "21.9a09ca29d5716ca1cd98685d9697df40.2592000.1428644718.2567539370-4425951";
-        String expireTime = "1424725311252";
+        String accessToken = "21.e88a380dbfdd4f7bfc4388eecc1ebb72.2592000.1428646833.2567539370-4425951";
+        String expireTime = "1426155150254";
 
         try {
             //AccessToken ac = BaiduPcsAuth.validateToken(api_token, secret_token, refresh_token, accessToken, appName,
             //        expireTime, retrofit.RestAdapter.LogLevel.FULL);
             AccessToken ac = BaiduPcsAuth.validateToken(api_token, secret_token, refresh_token, accessToken, appName,
-                    expireTime, retrofit.RestAdapter.LogLevel.NONE);
+                    expireTime, retrofit.RestAdapter.LogLevel.FULL);
            //AccessToken ac = BaiduPcsAuth.validateToken(api_token, secret_token, refresh_token, appName);
             
             //AccessToken ac;
