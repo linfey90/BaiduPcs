@@ -42,7 +42,7 @@ public class MainTest {
             //AccessToken ac = BaiduPcsAuth.validateToken(api_token, secret_token, refresh_token, accessToken, appName,
             //        expireTime, retrofit.RestAdapter.LogLevel.FULL);
             AccessToken ac = BaiduPcsAuth.validateToken(api_token, secret_token, refresh_token, accessToken, appName,
-                    expireTime, retrofit.RestAdapter.LogLevel.FULL);
+                    expireTime, retrofit.RestAdapter.LogLevel.NONE);
            //AccessToken ac = BaiduPcsAuth.validateToken(api_token, secret_token, refresh_token, appName);
             
             //AccessToken ac;
