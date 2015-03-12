@@ -110,7 +110,7 @@ public class BaiduPcsAuthCheck {
 		Date expireTimeDate = null;
 		if (expireTime != null && !expireTime.isEmpty()) {
 			try {
-				expireTimeDate = new Date(Long.parseLong(expireTime) - 1200000);
+				expireTimeDate = new Date(Long.parseLong(expireTime) - 86400);
 			} catch (NumberFormatException e) {
 				throw new InvalidArgsException(PROP_KEY_EXPIRE_TIME
 						+ " is not a valid time.");

@@ -15,7 +15,15 @@ import javax.xml.bind.DatatypeConverter;
 
 import org.apache.commons.io.IOUtils;
 
+import baidupcs.auth.AccessToken;
+import baidupcs.error.auth.InvalidArgsException;
+
 public class BaiduUtil {
+
+    public static AccessToken getAccessToken(String url) throws ClassNotFoundException, 
+            IOException, InvalidArgsException {
+        return GetAccess.getToken(url);
+    }
 
     /** convert InputStream to String */
     public static String getStringFromInputStream(InputStream is) throws IOException {
@@ -41,7 +49,7 @@ public class BaiduUtil {
 
         byte[] data = DatatypeConverter.parseBase64Binary(s);
         // Java 8 特有
-        //byte[] data = Base64.getDecoder().decode(s);
+        // byte[] data = Base64.getDecoder().decode(s);
         ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(data));
         Object o = ois.readObject();
         ois.close();
@@ -54,10 +62,10 @@ public class BaiduUtil {
         ObjectOutputStream oos = new ObjectOutputStream(baos);
         oos.writeObject(o);
         oos.close();
-        
+
         return DatatypeConverter.printBase64Binary(baos.toByteArray());
         // Java 8 特有
-        //return new String(Base64.getEncoder().encode(baos.toByteArray()));
+        // return new String(Base64.getEncoder().encode(baos.toByteArray()));
     }
 
 }
