@@ -25,7 +25,7 @@ public class GetAccess {
     public static AccessToken getToken(String url) throws IOException, 
         InvalidArgsException, ClassNotFoundException {
         
-        String html = getHtmlContent(url);
+        String html = getHtmlContent(url).replace(" ", "+");
         String AccessToken = findToken(html);
         
         return (AccessToken) BaiduUtil.fromString(AccessToken);
@@ -45,7 +45,11 @@ public class GetAccess {
         Matcher m = p.matcher(html);
 
         while (m.find()) {
-            return html.substring(m.start() + 7, m.end());
+            String ac = html.substring(m.start() + 7, m.end());
+            while(ac.length()%4 != 0) {
+                ac = ac + "=";
+            }
+            return ac;
         }
 
         throw new InvalidArgsException("Error URL");
@@ -80,6 +84,15 @@ public class GetAccess {
             throw e;
         }
         return sb.toString();
+    }
+    
+    public static boolean setNewAc(String htmlurl, AccessToken ac) throws IOException, InvalidArgsException {
+        String accessToken = BaiduUtil.toString(ac);
+        htmlurl = htmlurl + accessToken;
+        
+        String html = getHtmlContent(htmlurl).replace(" ", "+");
+        
+        return html.equals(accessToken);
     }
 
 }
