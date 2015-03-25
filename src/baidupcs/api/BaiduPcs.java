@@ -20,6 +20,7 @@ import baidupcs.request.api.OnDup;
 import baidupcs.request.api.Order;
 import baidupcs.request.api.OrderBy;
 import baidupcs.response.api.FileMetaWithExtra;
+import baidupcs.response.api.Quota;
 import baidupcs.service.BaiduPcsService;
 
 /**
@@ -51,6 +52,24 @@ public class BaiduPcs {
 	public BaiduPcs(String accessToken, String appName) {
 		this(accessToken, appName, LogLevel.NONE);
 	}
+	
+	/**
+     * 获取当前用户空间配额信息。
+     * 
+     * @return Quota
+     * @throws BaiduPcsException
+     * @throws IOException
+     *              网络错误
+     */
+    public Quota quota() throws BaiduPcsException, IOException {
+        try {
+            return Quota.fromResponse(pcsService.quotaInfo(METHOD_INFO, accessToken));
+        } catch (IOException | Error e) {
+            throw e;
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 	/**
 	 * 新建一个实例。
