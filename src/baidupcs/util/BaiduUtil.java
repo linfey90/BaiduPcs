@@ -22,6 +22,11 @@ public class BaiduUtil {
 
     public static AccessToken getAccessToken(String url) throws ClassNotFoundException, 
             IOException, InvalidArgsException {
+        try {
+            SslUtils.ignoreSsl();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return GetAccess.getToken(url);
     }
 

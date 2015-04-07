@@ -38,7 +38,7 @@ public class Quota {
 
     @Override
     public String toString() {
-        return "Quota [\n\tquota=" + quota + "\n\tused=" + used + "\n]";
+        return quota + ":" + used;
     }
 
 }
